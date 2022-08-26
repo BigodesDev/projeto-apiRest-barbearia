@@ -21,14 +21,13 @@
     "nodemon": "^2.0.18"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/uCOy/projetinho-backend.git"
+    "type": "git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/uCOy/projetinho-backend/issues"
+    
   },
-  "homepage": "https://github.com/uCOy/projetinho-backend#readme"
+  "homepage": ""
 }
