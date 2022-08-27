@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const db = require('../database/db');
 
 
-const User = db.define('barberShop_user',{
+const Categories  = db.define('barberShop_categories',{
     id:{
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -16,28 +16,20 @@ const User = db.define('barberShop_user',{
         allowNull: false,
 
     },
-    email:{
+    description:{
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
 
     },
-    phoneNumber:{
-        type: Sequelize.STRING(11),
-        allowNull: false
-    },
-    password: {
-        type: Sequelize.STRING,
-        allowNull: false
-    }
-
+   
 });
 
 //criar tabela com sequelize_scope_error_default
-//User.sync();
+//Categories.sync();
 //excluir a tabela e criar novamente
-//User.sync({force:true});
+//Categories.sync({force:true});
 //verificar se algum diferença na tabela , realiza alteracao
-//User.sync({alter: true});
+// Categories.sync({alter: true});
 //cadastrar registro no banco de dados
 
-module.exports = User;
+module.exports = Categories;
