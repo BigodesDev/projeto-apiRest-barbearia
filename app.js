@@ -3,35 +3,29 @@ const app = express();
 require('dotenv').config();
 var cors = require('cors');
 
-
 const router = require('./routes/index');
 
-const Categories = require('./models/categoryCortes');
-const Cortes = require('./models/cortes');
-const User = require('./models/users');
-const Service = require('./models/servicos');
+app.use( (req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+    res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+    app.use(cors());
+    next();
+})
 
-// app.use( (req, res, next) => {
-//     res.header("Access-Control-Allow-Origin", "*");
-//     res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-//     res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-//     app.use(cors());
-//     next();
-// })
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
-
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 
-// app.get('/', function (request, response) {
-//     response.send('Serviço API Rest iniciada...');
-// });
+app.get('/', function (request, response) {
+    response.send('Serviço API Rest iniciada...');
+});
 
-// app.use(router);
+app.use(router);
 
-// app.listen(process.env.PORT,() => {
-//     console.log(`Servico iniciado na porta ${process.env.PORT} http://localhost:${process.env.PORT}`);
-// });
+app.listen(process.env.PORT,() => {
+    console.log(`Servico iniciado na porta ${process.env.PORT} http://localhost:${process.env.PORT}`);
+});

@@ -1,14 +1,14 @@
 const Sequelize = require('sequelize');
 const db = require('../database/db');
 
-const Service = db.define('barberShop_service', {
+const Services = db.define('barberShop_services', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true
     },
-    name:{
+    name: {
         type: Sequelize.STRING(50),
         allowNull: false,
     },
@@ -19,17 +19,20 @@ const Service = db.define('barberShop_service', {
     price: {
         type: Sequelize.DECIMAL(15,2),
         allowNull: false,
+    },
+    servicesImages: {
+        type: Sequelize.STRING,
+        allowNull: true
     }
 })
 
-
 //Criar a tabela com sequelize
-//Service.sync();
+// Services.sync();
 
 //Excluir a tabela e criar novamente
-//Service.sync({ force: true});
+// Services.sync({ force: true});
 
 //Verificar se há alguma diferença na tabela, realiza alteração
-// Service.sync({ alter: true});
+// Services.sync({ alter: true});
 
-module.exports =Service;
+module.exports = Services;
