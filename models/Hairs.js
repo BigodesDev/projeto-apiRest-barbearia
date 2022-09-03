@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const db = require('../database/db');
 const Categories = require('./Category');
 
-const Cortes = db.define('barberShop_cortes', {
+const Haircuts = db.define('barberShop_cortes', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -35,12 +35,12 @@ Products.belongsTo(Categories, {
 })
 
 //Criar a tabela com sequelize
- //Products.sync();
+ //Haircuts.sync();
 
 //Excluir a tabela e criar novamente
-// Products.sync({ force: true});
+// Haircuts.sync({ force: true});
 
 //Verificar se há alguma diferença na tabela, realiza alteração
-// Products.sync({ alter: true});
+// Haircuts.sync({ alter: true});
 
-module.exports = Products;
+module.exports = Haircuts;
