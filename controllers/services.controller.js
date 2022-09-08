@@ -1,5 +1,5 @@
 const Services = require('../models/services');
-const upload = require('../middlewares/uploadImgServices');
+const fs = require('fs')
 
 exports.findAll = async (req, res) => {
     await Services.findAll({
