@@ -15,15 +15,11 @@ const Categories = db.define('barberShop_categories', {
     description: {
         type: Sequelize.STRING,
         allowNull: true
-    },
-    cotegoryImages: {
-        type: Sequelize.STRING,
-        allowNull: true
     }
 });
 
 //Criar a tabela com sequelize
-//Categories.sync();
+// Categories.sync();
 
 //Excluir a tabela e criar novamente
 // Categories.sync({ force: true });

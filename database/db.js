@@ -12,7 +12,7 @@ const sequelize = new Sequelize('senac', 'root', '', {
 // });
 
 sequelize.authenticate().then( function() {
-    console.log('Conexâo com banco de dados realizado com sucesso!');
+    console.log('Conexão com o Database Realizada com Sucesso !');
 }).catch( function(err){
     console.log(`Erro de Conexâo: ${err}` );
 })

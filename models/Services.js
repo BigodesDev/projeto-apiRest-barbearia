@@ -19,10 +19,6 @@ const Services = db.define('barberShop_services', {
     price: {
         type: Sequelize.DECIMAL(15,2),
         allowNull: false,
-    },
-    servicesImages: {
-        type: Sequelize.STRING,
-        allowNull: true
     }
 })
 

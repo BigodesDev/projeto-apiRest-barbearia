@@ -1,4 +1,4 @@
-const Services = require('../models/services');
+const Services = require('../models/Services');
 const fs = require('fs')
 
 exports.findAll = async (req, res) => {

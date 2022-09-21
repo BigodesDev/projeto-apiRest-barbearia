@@ -1,4 +1,4 @@
-const Categories = require('../models/categoryCortes');
+const Categories = require('../models/category');
 
 exports.findAll = async (req, res) => {
     await Categories.findAll({

@@ -1,7 +1,9 @@
-const User = require('../models/users');
+const User = require('../models/Users');
 const bcrypt = require('bcryptjs');
 const sendMail = require('../providers/mailProvider');
 const jwt = require('jsonwebtoken');
+
+const fs = require('fs');
 
 exports.findAll = async (req, res) => {
     await User.findAll({
@@ -135,7 +137,7 @@ exports.login = async (req, res) => {
     }
 
     const user = await User.findOne({
-        attributes: ['id', 'name', 'email', 'password'],
+        attributes: ['id', 'name', 'email', 'password', 'profileImg'],
         where: {
             email: req.body.email
         }
@@ -154,7 +156,7 @@ exports.login = async (req, res) => {
     }
 
     var token = jwt.sign({ id: user.id }, process.env.SECRET, {
-        expiresIn: 600 // 10min
+        expiresIn: 6000 // 10min
         // expiresIn: 60 // 1min
     });
 
@@ -212,4 +214,45 @@ exports.validarToken = async(req, res) => {
             mensagem: "Erro: Necessário realizar o login!"
         })
     })
+};
+
+exports.editProfileImage = async (req, res) => { //Oliveira
+    if(req.file){
+        console.log(req.file);
+
+        await User.findByPk(req.userId)
+        .then( user => {
+            console.log(user);
+            const imgOld = './public/upload/users/' + user.dataValues.profileImg
+            
+            fs.access(imgOld, (err) => {
+                if(!err){
+                    fs.unlink(imgOld, () => {})
+                };
+            });
+        }).catch( () => {
+            return res.status(400).json({
+                erro: true,
+                mensagem: "Erro: Perfil não Encontrado !"
+            });
+        });
+
+        await User.update({profileImg: req.file.filename},
+            {where: {id: req.userId}})
+            .then(() => {
+    return res.json({
+        erro: false,
+        mensagem: "Imagem Editada com Sucesso !"
+    })
+}).catch( (err) => {
+    return res.status(400).json({
+        erro: true,
+        mensagem: `Erro:${err}, Imagem não Editada !`
+    })
+})
+} else{
+    return res.status(400).json({
+        erro: true,
+        mensagem: "Erro: Selecione uma Imagem Válida ! (.png, .jpeg, .jpg)"
+    })};
 };

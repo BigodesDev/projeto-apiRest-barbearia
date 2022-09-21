@@ -1,5 +1,5 @@
 const Haircuts = require('../models/Hairs');
-const Categories = require('../models/Categories');
+const Categories = require('../models/Category');
 
 exports.findAll = async (req, res) => {
     await Haircuts.findAll({
