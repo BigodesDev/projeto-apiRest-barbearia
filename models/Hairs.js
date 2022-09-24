@@ -31,7 +31,7 @@ Haircuts.belongsTo(Categories, {
 })
 
 //Criar a tabela com sequelize
-//  Haircuts.sync();
+// Haircuts.sync();
 
 //Excluir a tabela e criar novamente
 // Haircuts.sync({ force: true});

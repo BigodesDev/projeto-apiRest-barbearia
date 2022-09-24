@@ -19,7 +19,7 @@ const Categories = db.define('barberShop_categories', {
 });
 
 //Criar a tabela com sequelize
-// Categories.sync();
+//Categories.sync();
 
 //Excluir a tabela e criar novamente
 // Categories.sync({ force: true });

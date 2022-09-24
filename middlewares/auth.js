@@ -23,7 +23,7 @@ module.exports = {
             const decoded = await promisify(jwt.verify)(token, process.env.SECRET);
             req.userId = decoded.id;
     
-            return next();
+        return next();
         } catch (err){
             if(err){
                 return res.status(400).json({
